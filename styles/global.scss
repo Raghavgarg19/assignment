@@ -73,7 +73,7 @@ input[type="text"] {
     }
 
     .img-box {
-        height: 110px;
+        height: fit-content;
 
         width: 14rem;
 
@@ -81,9 +81,11 @@ input[type="text"] {
 
         padding-top: 10px;
 
-        margin-top: 10px;
+        margin-top: auto;
+        margin-bottom: auto;
 
         display: flex;
+
     }
 
     .country-info {
@@ -125,4 +127,23 @@ input[type="text"] {
 
 .showdiv {
     display: flex;
+}
+
+
+.country-flag{
+    width: 90%;
+    height: auto;
+}
+
+
+.detail-img{
+    width: 90%;
+    height: auto;
+    
+}
+
+
+.neighbour-country-img{
+    width: 380px;
+    height: auto;
 }

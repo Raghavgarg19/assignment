@@ -1,48 +1,51 @@
 import { useEffect, useState } from "react";
+import Router from "next/router";
+
 export async function getServerSideProps(context) {
   const id = context.query.id;
+  const response = await fetch(
+    `https://restcountries.com/v3.1/alpha/${context.query.id}`
+  );
+  const response2 = await fetch("https://restcountries.com/v3.1/all");
+
+  const data = await response.json();
+  const data2 = await response2.json();
 
   return {
     props: {
       id: id || null,
+      data: data || null,
+      data2: data2 || null,
     },
   };
 }
 const Details = (props) => {
-  const [countryData, setCountryData] = useState({});
+  const [countryData, setCountryData] = useState(props?.data[0]);
 
   const [neighbourCountryData, setNeighbourCountryData] = useState([]);
 
   useEffect(() => {
     fetchCountryData(props?.id);
+    if (props?.data?.length > 0) {
+      setCountryData(props?.data[0]);
+    } else {
+      Router.push("/404");
+    }
+
+    
   }, [props]);
 
   const fetchCountryData = async (id) => {
-      try {
-        const response = await fetch(
-          `https://restcountries.com/v3.1/alpha/${id}`
-        );
-      const response2 = await fetch("https://restcountries.com/v3.1/all");
-
-      
-          const data = await response.json();
-          const data2 = await response2.json();
-
-    //   const country = data?.filter((elem) => elem?.name?.common === id);
-
+    try {
       const neighbourCountry = [];
 
-      data[0]
-        ?.borders?.map((elem) => {
-          let obj = data2?.filter((item) => item?.cca3 === elem);
+      props?.data[0]?.borders?.map((elem) => {
+        let obj = props?.data2?.filter((item) => item?.cca3 === elem);
 
-          if (obj?.length > 0) {
-            neighbourCountry?.push(obj[0]);
-          }
-        });
-
-      setCountryData(data[0]);
-
+        if (obj?.length > 0) {
+          neighbourCountry?.push(obj[0]);
+        }
+      });
       setNeighbourCountryData(neighbourCountry);
 
       console.log(neighbourCountry, "neighbourCountry");
@@ -67,7 +70,7 @@ const Details = (props) => {
                     countryData.flags.png && (
                       <img
                         src={countryData.flags.png}
-                        className="detail-img  col-12 mx-0 px-0"
+                        className="detail-img"
                         alt=""
                       />
                     )}
@@ -125,7 +128,7 @@ const Details = (props) => {
               <h4>Neighbour Countries</h4>
 
               <div className="row my-2 mx-2  border border-dark">
-                <div className=" my-2 d-flex flex-wrap justify-content-between">
+                <div className=" my-2 d-flex flex-wrap justify-content-between align-items-center">
                   {neighbourCountryData?.map((elem) => {
                     return (
                       <img

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
+import CountryBox from "../components/country-box";
 
 export default function index() {
   const [countries, setCountries] = useState([]);
@@ -186,25 +186,7 @@ export default function index() {
 
     setCountries(countriesData2);
   };
-  function calcTime(Country, offset) {
-    let len = offset.length;
 
-    let newstring = offset.substring(3, len + 1);
-
-    let offset1 = newstring.replace(":", ".");
-
-    let d = new Date();
-
-    let utc = d.getTime() + d.getTimezoneOffset() * 60000;
-
-    let nd = new Date(utc + 3600000 * offset1);
-
-    let mytime = " " + nd.toLocaleString();
-
-    // setcurrentdate(mytime);
-
-    return mytime;
-  }
   return (
     <>
       <div>
@@ -228,48 +210,7 @@ export default function index() {
         <div className="container">
           {countries?.map((elem) => {
             return (
-              <div className="box">
-                <div className="img-box">
-                  <img src={elem.flags.svg} alt="" />
-                </div>
-
-                <div className="country-info">
-                  <h6>{elem?.name?.common}</h6>
-
-                  <p>
-                    Currencies :
-                    {elem?.currencies
-                      ? Object.values(elem.currencies).join(", ")
-                      : "-"}
-                  </p>
-
-                  <p>
-                    Current date and time :{" "}
-                    {calcTime(elem?.name?.common, elem?.timezones[0])}
-                    {/* {`${formattedDateTime}`} */}
-                  </p>
-
-                  <button className="showmapbtn">
-                    <Link
-                      href={elem.maps.googleMaps}
-                      target="_blank"
-                      className="showfont"
-                    >
-                      Show Map
-                    </Link>
-                  </button>
-
-                  <button className="showmapbtn">
-                    <Link
-                      href={`/details/${elem?.cca3}`}
-                      target="_blank"
-                      className="showfont"
-                    >
-                      Details
-                    </Link>
-                  </button>
-                </div>
-              </div>
+              <CountryBox country={elem}/>
             );
           })}
         </div>
