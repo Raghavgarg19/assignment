@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import CountryBox from "../components/country-box";
+import CountryListItem from "../components/countryListItem";
 
 export default function index() {
   const [countries, setCountries] = useState([]);
@@ -97,7 +97,7 @@ export default function index() {
         filteredData?.push(obj);
       });
 
-      // console.log(data);
+      console.log(data);
 
       setCountries(data);
       console.log(countries);
@@ -208,9 +208,9 @@ export default function index() {
         {console.log(countries, "countries Vsis")}
 
         <div className="container">
-          {countries?.map((elem) => {
+          {countries?.map((country) => {
             return (
-              <CountryBox country={elem}/>
+              <CountryListItem country={country}/>
             );
           })}
         </div>

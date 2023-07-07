@@ -102,7 +102,7 @@ const Details = (props) => {
                   <p>
                     Currencies:{" "}
                     {countryData?.currencies
-                      ? Object.values(countryData.currencies).join(", ")
+                      ? Object.values(countryData.currencies)[0].name
                       : "-"}
                   </p>
 
