@@ -77,7 +77,12 @@ const Details = (props) => {
                 </div>
                 <div className="col-lg-5 col-11 mt-0 country-all">
                   {/* <p>Native Name: {countryData?.name?.native?.official}</p> */}
-
+                  <p>
+                    Native Name:{" "}
+                    {countryData?.name.nativeName
+                      ? Object.values(countryData?.name?.nativeName)[0].common
+                      : "-"}
+                  </p>
                   <p className="mt-3">Capital: {countryData?.capital}</p>
 
                   <p>Population: {countryData?.population}</p>
