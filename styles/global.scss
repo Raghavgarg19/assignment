@@ -5,7 +5,7 @@
 
     text-align: center;
 
-    margin-right: 350px;
+    margin-right: 380px;
 
     margin-top: 80px;
 
@@ -18,19 +18,21 @@
     text-align: center;
 
 }
-.my-search{
+
+.my-search {
 
     width: 32rem;
     display: flex;
     margin: auto;
-    .my-new-search{
+
+    .my-new-search {
         width: 32rem;
     }
 
 }
 
 input[type="text"] {
-    width: 478px;
+    width: 510px;
     /* Adjust the width as needed */
 
     padding: 8px;
@@ -60,16 +62,17 @@ input[type="text"] {
     .box {
         width: 32rem;
 
-        height: 11rem;
+        height: 10rem;
 
-        border: 1px solid grey;
+        border: 1px solid lightgray;
+        border-radius: 3px;
 
         margin: auto;
 
         margin-bottom: 10px;
 
         display: flex;
-        
+
     }
 
     .img-box {
@@ -77,27 +80,61 @@ input[type="text"] {
 
         width: 14rem;
 
-        padding-left: 8px;
+        padding-left: 10px;
 
-        padding-top: 10px;
+        padding-top: auto;
 
         margin-top: auto;
         margin-bottom: auto;
 
         display: flex;
+        align-items: center;
+        margin-right: 0;
+
+        .country-flag {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
 
     }
 
     .country-info {
-        margin-top: 10px;
+        margin-top: 23px;
+        margin-bottom: 5px;
+        padding: 5px;
 
-        width: 18rem;
+        width: 17rem;
 
         font-size: 13px;
+        white-space: nowrap;
+        margin-left: 0;
+    }
+
+    .country-info p {
+
+        font-weight: 500;
+
+        margin: 1px;
+
+        margin-left: 2px;
+
+        margin-bottom: 4px;
+
+    }
+
+    .country-info h6 {
+
+        margin: 0;
+
+        margin-left: 2px;
+
+        font-weight: bolder;
+
     }
 
     .showmapbtn {
-        width: 6rem;
+        width: 8rem;
 
         height: 2rem;
 
@@ -108,6 +145,7 @@ input[type="text"] {
         border-radius: 0;
 
         margin-right: 10px;
+        font-weight: 50px;
     }
 
     .showfont {
@@ -116,13 +154,15 @@ input[type="text"] {
         font-size: 14px;
 
         text-decoration: none;
+        font-weight: 500;
     }
 }
 
 .country-all p {
     font-family: "Poppins", sans-serif;
-    font-weight: 200;
-    margin-left: 10px;
+    font-weight: 540;
+    margin: 4px 0;
+    margin-right: 90px;
 }
 
 .showdiv {
@@ -130,20 +170,35 @@ input[type="text"] {
 }
 
 
-.country-flag{
+.country-flag {
     width: 90%;
     height: auto;
 }
 
 
-.detail-img{
-    width: 90%;
-    height: auto;
-    
+
+
+
+.neighbour-country-img {
+    width: 28%;
+
+    height: 40%;
+
+    padding: 4px;
+
+    object-fit: cover;
+
+    margin: 10px;
+
+    position: relative;
+
+    object-fit: relative;
+
+    border: 5px;
 }
 
-
-.neighbour-country-img{
-    width: 380px;
+.detail-img {
+    width: 80%;
     height: auto;
+
 }
